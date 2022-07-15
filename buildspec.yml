@@ -18,9 +18,9 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push public.ecr.aws/c7l4l0y6/arthur-helloworld:latest
+      - docker push public.ecr.aws/c7l4l0y6/arthur-helloworld:latest
       - echo Writing image definitions file...
-      - printf '[{"name”:"ArthurContainer","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name”:"ArthurContainer","imageUri":"%s"}]' public.ecr.aws/c7l4l0y6/arthur-helloworld:latest > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
