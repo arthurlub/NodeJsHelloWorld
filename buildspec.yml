@@ -4,7 +4,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 753392824297.dkr.ecr.us-west-2.amazonaws.com
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/c7l4l0y6
       - REPOSITORY_URI=public.ecr.aws/c7l4l0y6/arthur-helloworld
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
@@ -12,14 +12,13 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t 753392824297.dkr.ecr.us-west-2.amazonaws.com/arthur-helloworld:latest .
-      #- docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker build -t docker build -t arthur-helloworld .
+      - docker tag arthur-helloworld:latest public.ecr.aws/c7l4l0y6/arthur-helloworld:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push  753392824297.dkr.ecr.us-west-2.amazonaws.com/arthur-helloworld:latest
-      - docker push 753392824297.dkr.ecr.us-west-2.amazonaws.com/arthur-helloworld:latest
+      - docker push public.ecr.aws/c7l4l0y6/arthur-helloworld:latest
       - echo Writing image definitions fi753392824297.dkr.ecr.us-west-2.amazonaws.com/arthur-helloworldle...
       - printf '[{"name”:"ArthurContainer","imageUri":"%s"}]' 753392824297.dkr.ecr.us-west-2.amazonaws.com/arthur-helloworld:latest > imagedefinitions.json
 artifacts:
