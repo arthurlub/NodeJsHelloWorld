@@ -18,9 +18,9 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push public.ecr.aws/c7l4l0y6/arthur-helloworld:latest
-      - docker push public.ecr.aws/c7l4l0y6/arthur-helloworld:latest
-      - echo Writing image definitions file...
-      - printf '[{"name”:"ArthurContainer","imageUri":"%s"}]' public.ecr.aws/c7l4l0y6/arthur-helloworld:latest > imagedefinitions.json
+      - docker push  753392824297.dkr.ecr.us-west-2.amazonaws.com/arthur-helloworld:latest
+      - docker push 753392824297.dkr.ecr.us-west-2.amazonaws.com/arthur-helloworld:latest
+      - echo Writing image definitions fi753392824297.dkr.ecr.us-west-2.amazonaws.com/arthur-helloworldle...
+      - printf '[{"name”:"ArthurContainer","imageUri":"%s"}]' 753392824297.dkr.ecr.us-west-2.amazonaws.com/arthur-helloworld:latest > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
