@@ -20,6 +20,6 @@ phases:
       - echo Pushing the Docker images...
       - docker push 753392824297.dkr.ecr.us-west-2.amazonaws.com/helloworldart:latest
       - echo Writing image definitions 753392824297.dkr.ecr.us-west-2.amazonaws.com/helloworldart:latest...
-      - printf '[{"name":"ContainerJsApp","imageUri":"docker tag helloworldart:latest 753392824297.dkr.ecr.us-west-2.amazonaws.com/helloworldart:latest"}]' > imagedefinitions.json
+      - printf '[{"name":"ContainerJsApp","imageUri":"753392824297.dkr.ecr.us-west-2.amazonaws.com/helloworldart:latest"}]' > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
